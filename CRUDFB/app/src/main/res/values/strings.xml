@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">CRUDFB2</string>
+    <string name="Correo">Correo</string>
+    <string name="Password">Contrasena</string>
+    <string name="Nombres">Nombre(s)</string>
+    <string name="Apellidos">Apellido(s)</string>
+    <string name="Edad">Edad</string>
+    <string name="FechaRegistro">Fecha de Registro</string>
+    <string name="Registrar">Registrar</string>
+</resources>
