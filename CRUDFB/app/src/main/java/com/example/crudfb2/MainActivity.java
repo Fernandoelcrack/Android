@@ -50,14 +50,14 @@ public class MainActivity extends AppCompatActivity {
         btneli  = (Button)   findViewById(R.id.btneli);
         lvDatos = (ListView) findViewById(R.id.lvDatos);
 
-        //botonBuscar();
-        //botonModificar();
+        botonBuscar();
+        botonModificar();
         botonRegistrar();
-        //botonEliminar();
-        //listarAdministradores();
+        botonEliminar();
+        listarAdministradores();
     }
 
-    /*private void botonBuscar(){
+    private void botonBuscar(){
         btnbus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
                 }else{
                     int id = Integer.parseInt(txtid.getText().toString());
+
                     FirebaseDatabase db = FirebaseDatabase.getInstance();
                     DatabaseReference dbref = db.getReference(Administrador.class.getSimpleName());
                     dbref.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -73,12 +74,18 @@ public class MainActivity extends AppCompatActivity {
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                             String aux = Integer.toString(id);
+
                             boolean res = false;
                             for(DataSnapshot x : snapshot.getChildren()){
                                 if(aux.equalsIgnoreCase(x.child("id").getValue().toString())){
                                     res = true;
                                     ocultarTeclado();
                                     txtnom.setText(x.child("nombre").getValue().toString());
+                                    txtapp.setText(x.child("apellido").getValue().toString());
+                                    txtcorreo.setText(x.child("correo").getValue().toString());
+                                    txtedad.setText(x.child("edad").getValue().toString());
+                                    txtfecha.setText(x.child("fecha").getValue().toString());
+                                    txtpass.setText(x.child("pass").getValue().toString());
                                     break;
                                 }
                             }
@@ -100,16 +107,21 @@ public class MainActivity extends AppCompatActivity {
         
     }//botonbuscar */
 
-    /* private void botonModificar(){
+    private void botonModificar(){
         btnmod.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(txtid.getText().toString().trim().isEmpty() || txtnom.getText().toString().trim().isEmpty()){
+                if(txtid.getText().toString().trim().isEmpty() || txtnom.getText().toString().trim().isEmpty() || txtapp.getText().toString().trim().isEmpty() || txtcorreo.getText().toString().trim().isEmpty() || txtedad.getText().toString().trim().isEmpty() || txtfecha.getText().toString().trim().isEmpty() || txtpass.getText().toString().trim().isEmpty()){
                     ocultarTeclado();
                     Toast.makeText(MainActivity.this, "Complete los campos faltantes para actualizar", Toast.LENGTH_SHORT).show();
                 }else{
                     int id = Integer.parseInt(txtid.getText().toString());
                     String nom = txtnom.getText().toString();
+                    String app = txtapp.getText().toString();
+                    String correo = txtcorreo.getText().toString();
+                    int edad = Integer.parseInt(txtedad.getText().toString());
+                    String fecha = txtfecha.getText().toString();
+                    String pass = txtpass.getText().toString();
 
                     FirebaseDatabase db = FirebaseDatabase.getInstance();
                     DatabaseReference dbref = db.getReference(Administrador.class.getSimpleName());
@@ -125,8 +137,18 @@ public class MainActivity extends AppCompatActivity {
                                     res = true;
                                     ocultarTeclado();
                                     x.getRef().child("nombre").setValue(nom);
+                                    x.getRef().child("apellido").setValue(app);
+                                    x.getRef().child("correo").setValue(correo);
+                                    x.getRef().child("edad").setValue(edad);
+                                    x.getRef().child("fecha").setValue(fecha);
+                                    x.getRef().child("pass").setValue(pass);
                                     txtid.setText("");
                                     txtnom.setText("");
+                                    txtapp.setText("");
+                                    txtcorreo.setText("");
+                                    txtedad.setText("");
+                                    txtfecha.setText("");
+                                    txtpass.setText("");
                                     ocultarTeclado();
                                     listarAdministradores();
                                     break;
@@ -218,7 +240,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }//findelbotonregistrar
 
-    /* private void listarAdministradores(){
+    private void listarAdministradores(){
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         DatabaseReference dbref = db.getReference(Administrador.class.getSimpleName());
         ArrayList<Administrador> lisadm = new ArrayList<Administrador>();
@@ -263,17 +285,20 @@ public class MainActivity extends AppCompatActivity {
                 a.setCancelable(true);
                 a.setTitle("Administrador seleccionado");
                 String msg = "ID : " + adm.getId() +"\n\n";
-                msg += "NOMBRE : " +adm.getNombre();
+                msg += "NOMBRE : " +adm.getNombre() +adm.getApellido() +"\n\n";
+                msg += "CORREO : " +adm.getCorreo() +"\n\n";
+                msg += "EDAD : " +adm.getEdad() +"\n\n";
+                msg += "FECHA : " +adm.getFecha() +"\n\n";
 
                 a.setMessage(msg);
                 a.show();
             }
         });
 
-    }//final metodo */
+    }//final metodo
 
 
-   /* private void botonEliminar(){
+   private void botonEliminar(){
         btneli.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -298,6 +323,7 @@ public class MainActivity extends AppCompatActivity {
                                     a.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
+                                            ocultarTeclado();
                                         }
                                     });
                                     a.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
@@ -307,6 +333,14 @@ public class MainActivity extends AppCompatActivity {
                                             ocultarTeclado();
                                             x.getRef().removeValue();
                                             listarAdministradores();
+                                            txtid.setText("");
+                                            txtnom.setText("");
+                                            txtapp.setText("");
+                                            txtcorreo.setText("");
+                                            txtedad.setText("");
+                                            txtfecha.setText("");
+                                            txtpass.setText("");
+                                            Toast.makeText(MainActivity.this, "Registro eliminado", Toast.LENGTH_SHORT).show();
 
                                         }
                                     });
@@ -315,7 +349,7 @@ public class MainActivity extends AppCompatActivity {
 
                                 }
                             }
-                            if(res[0] == false){
+                            if(res[0] == true){
                                 Toast.makeText(MainActivity.this, "ID ("+aux+") Imposible de Eliminar", Toast.LENGTH_SHORT).show();
                             }
                         }
