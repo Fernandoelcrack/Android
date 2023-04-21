@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<resources>
+    <string name="app_name">MyABC</string>
+    <string name="base">Crear base</string>
+    <string name="texttitle">Ingrese los siguientes datos</string>
+    <string name="nombre">Nombre</string>
+    <string name="cinta">Cinta</string>
+    <string name="categoria">Categoria</string>
+    <string name="compite">Compite en:</string>
+    <string name="escuela">Escuela</string>
+    <string name="insertar">Insertar</string>
+    <string name="menu_nuevo">Nuevo Registro</string>
+    <string name="delete">Delete</string>
+    <string name="view">View data</string>
+</resources>
