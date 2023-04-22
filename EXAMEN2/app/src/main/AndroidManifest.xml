@@ -12,6 +12,19 @@
         android:theme="@style/Theme.EXAMEN2"
         tools:targetApi="31">
         <activity
+            android:name=".ui.login.InicioSesion"
+            android:exported="false"
+            android:label="@string/title_activity_inicio_sesion" />
+        <activity
+            android:name=".Perfil"
+            android:exported="false" />
+        <activity
+            android:name=".Registrar_Productos"
+            android:exported="false" />
+        <activity
+            android:name=".Registro"
+            android:exported="false" />
+        <activity
             android:name=".Empresa"
             android:exported="false" />
         <activity

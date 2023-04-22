@@ -23,7 +23,7 @@ public class Principal extends AppCompatActivity {
         btnadmin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Principal.this, Administradores.class);
+                Intent intent = new Intent(Principal.this, Registro.class);
                 startActivity(intent);
 
             }
@@ -32,7 +32,7 @@ public class Principal extends AppCompatActivity {
         btncliente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Principal.this, Clientes.class);
+                Intent intent = new Intent(Principal.this, Registro.class);
                 startActivity(intent);
             }
         });
