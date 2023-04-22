@@ -17,6 +17,7 @@ public class DbContactos extends DbHelper {
         this.context = context;
     }
 
+    //método para agregar los registros que se ingresen en los edittexts de el mainactivity.xml
     public long insertarContacto(String nombre, String cinta, String categoria, String escuela, String compite){
         long id = 0;
         try {
@@ -37,6 +38,7 @@ public class DbContactos extends DbHelper {
         return id;
     }
 
+    //ArrayList para poder desplegar los regsitros que se vayan guardando y enseñarlos en un textView dentro de un recyclerview o items
     public ArrayList <Contactos> mostrarContactos(){
         DbHelper dbHelper = new DbHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();

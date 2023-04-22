@@ -1,3 +1,32 @@
 <resources>
-    <string name="app_name">EXAMEN2</string>
+    <string name="app_name">Examen Parcial</string>
+    <string name="autor">Calleja Jimenez Fernando Yahir</string>
+    <string name="exam">Examen Parcial</string>
+    <string name="grupo">6IM9</string>
+
+    <string name="InicioAdmin">Inicio</string>
+    <string name="PerfilAdmin">Perfil</string>
+    <string name="ListarAdmin">Registrar</string>
+    <string name="RegistrarAdmin">Lista de Admin</string>
+    <string name="Salir">Cerrar Sesion</string>
+    <string name="navigation_drawer_open">Open Navigation drawer</string>
+    <string name="navigation_drawer_close">Close Navigation drawer</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="InicioCliente">Inicio</string>
+    <string name="Acercade">Acerca de</string>
+    <string name="Compartir">Compartir</string>
+
+    <string name="RegistroTXT">Registro de administradores</string>
+    <string name="Correo">Correo</string>
+    <string name="Password">Contrasena</string>
+    <string name="Nombres">Nombre(s)</string>
+    <string name="Apellidos">Apellido(s)</string>
+    <string name="Edad">Edad</string>
+    <string name="FechaRegistro">Fecha de Registro</string>
+    <string name="Registrar">Registrar</string>
+
+
+
+
 </resources>
