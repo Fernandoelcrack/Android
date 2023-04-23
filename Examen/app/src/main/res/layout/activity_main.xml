@@ -16,8 +16,9 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="250dp"
             android:layout_height="250dp"
-            android:src="@drawable/android"
+            android:src="@drawable/cecyt"
             android:gravity="center"/>
+
         <TextView
             android:id="@+id/autor"
             android:text="@string/autor"
@@ -42,18 +43,6 @@
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-
-        <com.airbnb.lottie.LottieAnimationView
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            app:lottie_imageAssetsFolder="assets"
-            app:lottie_fileName="hongo.json"
-            app:lottie_loop="true"
-            app:lottie_autoPlay="true"/>
-
-
 
 
     </androidx.appcompat.widget.LinearLayoutCompat>

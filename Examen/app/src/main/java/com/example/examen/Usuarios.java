@@ -1,18 +1,18 @@
-package com.example.crudfb2;
+package com.example.examen;
 
-public class Usuario{
+public class Usuarios {
 
     private int tipo;
-    private String correo;
+    private String username;
     private String password;
     private String password2;
 
-    public Usuario() {
+    public Usuarios() {
     }
 
-    public Usuario(int tipo, String correo, String password, String password2) {
+    public Usuarios(int tipo, String username, String password, String password2) {
         this.tipo = tipo;
-        this.correo = correo;
+        this.username = username;
         this.password = password;
         this.password2 = password2;
     }
@@ -25,12 +25,12 @@ public class Usuario{
         this.tipo = tipo;
     }
 
-    public String getCorreo() {
-        return correo;
+    public String getusername() {
+        return username;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setusername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -51,9 +51,9 @@ public class Usuario{
 
     @Override
     public String toString() {
-        return "Usuario{" +
+        return "Usuarios{" +
                 "tipo=" + tipo +
-                ", correo='" + correo + '\'' +
+                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", password2='" + password2 + '\'' +
                 '}';

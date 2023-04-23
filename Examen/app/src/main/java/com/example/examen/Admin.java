@@ -1,4 +1,4 @@
-package com.example.crudfb2;
+package com.example.examen;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -7,7 +7,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -26,35 +30,28 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class Admin extends AppCompatActivity {
 
-    private EditText txtid, txtnom, txtapp, txtcorreo, txtedad, txtfecha, txtpass;
+    private EditText txtid, txtnom, txtprecio;
     private Button btnbus, btnmod, btnreg, btneli;
-    private ListView lvDatos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_admin);
 
         txtid   = (EditText) findViewById(R.id.txtid);
         txtnom  = (EditText) findViewById(R.id.txtnom);
-        txtapp = (EditText) findViewById(R.id.txtapp);
-        txtcorreo = (EditText) findViewById(R.id.txtcorreo);
-        txtedad = (EditText) findViewById(R.id.txtedad);
-        txtfecha = (EditText) findViewById(R.id.txtfecha);
-        txtpass = (EditText) findViewById(R.id.txtpass);
+        txtprecio = (EditText) findViewById(R.id.txtprecio);
         btnbus  = (Button)   findViewById(R.id.btnbus);
         btnmod  = (Button)   findViewById(R.id.btnmod);
         btnreg  = (Button)   findViewById(R.id.btnreg);
         btneli  = (Button)   findViewById(R.id.btneli);
-        lvDatos = (ListView) findViewById(R.id.lvDatos);
 
         botonBuscar();
         botonModificar();
         botonRegistrar();
         botonEliminar();
-        listarUsuarioes();
     }
 
     private void botonBuscar(){
@@ -62,13 +59,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(txtid.getText().toString().trim().isEmpty()){
-                    Toast.makeText(MainActivity.this, "Digite el ID del luchador a buscar", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Admin.this, "Digite el ID del luchador a buscar", Toast.LENGTH_SHORT).show();
 
                 }else{
                     int id = Integer.parseInt(txtid.getText().toString());
 
                     FirebaseDatabase db = FirebaseDatabase.getInstance();
-                    DatabaseReference dbref = db.getReference(Usuario.class.getSimpleName());
+                    DatabaseReference dbref = db.getReference(Admin.class.getSimpleName());
                     dbref.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -81,16 +78,13 @@ public class MainActivity extends AppCompatActivity {
                                     res = true;
                                     ocultarTeclado();
                                     txtnom.setText(x.child("nombre").getValue().toString());
-                                    txtapp.setText(x.child("apellido").getValue().toString());
-                                    txtcorreo.setText(x.child("correo").getValue().toString());
-                                    txtedad.setText(x.child("edad").getValue().toString());
-                                    txtfecha.setText(x.child("fecha").getValue().toString());
-                                    txtpass.setText(x.child("pass").getValue().toString());
+                                    txtprecio.setText(x.child("precio").getValue().toString());
+                                    
                                     break;
                                 }
                             }
                             if(res == false){
-                                Toast.makeText(MainActivity.this, "ID ("+aux+") No Encontrado", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Admin.this, "ID ("+aux+") No Encontrado", Toast.LENGTH_SHORT).show();
                             }
                         }
 
@@ -111,20 +105,17 @@ public class MainActivity extends AppCompatActivity {
         btnmod.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(txtid.getText().toString().trim().isEmpty() || txtnom.getText().toString().trim().isEmpty() || txtapp.getText().toString().trim().isEmpty() || txtcorreo.getText().toString().trim().isEmpty() || txtedad.getText().toString().trim().isEmpty() || txtfecha.getText().toString().trim().isEmpty() || txtpass.getText().toString().trim().isEmpty()){
+                if(txtid.getText().toString().trim().isEmpty() || txtnom.getText().toString().trim().isEmpty() || txtprecio.getText().toString().trim().isEmpty()){
                     ocultarTeclado();
-                    Toast.makeText(MainActivity.this, "Complete los campos faltantes para actualizar", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Admin.this, "Complete los campos faltantes para actualizar", Toast.LENGTH_SHORT).show();
                 }else{
                     int id = Integer.parseInt(txtid.getText().toString());
                     String nom = txtnom.getText().toString();
-                    String app = txtapp.getText().toString();
-                    String correo = txtcorreo.getText().toString();
-                    int edad = Integer.parseInt(txtedad.getText().toString());
-                    String fecha = txtfecha.getText().toString();
-                    String pass = txtpass.getText().toString();
+                    int precio = Integer.parseInt(txtprecio.getText().toString());
+
 
                     FirebaseDatabase db = FirebaseDatabase.getInstance();
-                    DatabaseReference dbref = db.getReference(Usuario.class.getSimpleName());
+                    DatabaseReference dbref = db.getReference(Admin.class.getSimpleName());
 
                     dbref.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -137,20 +128,11 @@ public class MainActivity extends AppCompatActivity {
                                     res = true;
                                     ocultarTeclado();
                                     x.getRef().child("nombre").setValue(nom);
-                                    x.getRef().child("apellido").setValue(app);
-                                    x.getRef().child("correo").setValue(correo);
-                                    x.getRef().child("edad").setValue(edad);
-                                    x.getRef().child("fecha").setValue(fecha);
-                                    x.getRef().child("pass").setValue(pass);
+                                    x.getRef().child("precio").setValue(precio);
                                     txtid.setText("");
                                     txtnom.setText("");
-                                    txtapp.setText("");
-                                    txtcorreo.setText("");
-                                    txtedad.setText("");
-                                    txtfecha.setText("");
-                                    txtpass.setText("");
+                                    txtprecio.setText("");
                                     ocultarTeclado();
-                                    listarUsuarioes();
                                     break;
                                 }
                             }
@@ -158,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
                             if(res == false){
 
                                 ocultarTeclado();
-                                Toast.makeText(MainActivity.this, "ID ("+aux+") de Usuario Modificado", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Admin.this, "ID ("+aux+") de Admin Modificado", Toast.LENGTH_SHORT).show();
 
                                 txtid.setText("");
                                 txtnom.setText("");
@@ -181,20 +163,16 @@ public class MainActivity extends AppCompatActivity {
         btnreg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(txtid.getText().toString().trim().isEmpty() || txtnom.getText().toString().trim().isEmpty() || txtapp.getText().toString().trim().isEmpty() || txtcorreo.getText().toString().trim().isEmpty() || txtedad.getText().toString().trim().isEmpty() || txtfecha.getText().toString().trim().isEmpty() || txtpass.getText().toString().trim().isEmpty()){
+                if(txtid.getText().toString().trim().isEmpty() || txtnom.getText().toString().trim().isEmpty() || txtprecio.getText().toString().trim().isEmpty()){
                     ocultarTeclado();
-                    Toast.makeText(MainActivity.this, "Complete los campos faltantes", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Admin.this, "Complete los campos faltantes", Toast.LENGTH_SHORT).show();
                 }else{
                     int id = Integer.parseInt(txtid.getText().toString());
                     String nom = txtnom.getText().toString();
-                    String app = txtapp.getText().toString();
-                    String correo = txtcorreo.getText().toString();
-                    int edad = Integer.parseInt(txtedad.getText().toString());
-                    String fecha = txtfecha.getText().toString();
-                    String pass = txtpass.getText().toString();
+                    int precio = Integer.parseInt(txtprecio.getText().toString());
 
                     FirebaseDatabase db = FirebaseDatabase.getInstance();
-                    DatabaseReference dbref = db.getReference(Usuario.class.getSimpleName());
+                    DatabaseReference dbref = db.getReference(Admin.class.getSimpleName());
 
                     dbref.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -206,26 +184,21 @@ public class MainActivity extends AppCompatActivity {
                                 if(x.child("id").getValue().toString().equalsIgnoreCase(aux)){
                                     res = true;
                                     ocultarTeclado();
-                                    Toast.makeText(MainActivity.this, "ERROR, El ID ("+aux+") YA EXISTE", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Admin.this, "ERROR, El ID ("+aux+") YA EXISTE", Toast.LENGTH_SHORT).show();
                                     ocultarTeclado();
                                     break;
                                 }
                             }
 
                             if(res == false){
-
-                                Usuario adm = new Usuario(id, nom, app, correo, edad, fecha, pass);
-                                dbref.push().setValue(adm);
-                                ocultarTeclado();
-                                Toast.makeText(MainActivity.this, "Usuario Registrado", Toast.LENGTH_SHORT).show();
+                                    Productos adm = new Productos(id, nom, precio);
+                                    dbref.push().setValue(adm);
+                                    ocultarTeclado();
+                                    Toast.makeText(Admin.this, "Producto Registrado", Toast.LENGTH_SHORT).show();
 
                                 txtid.setText("");
                                 txtnom.setText("");
-                                txtapp.setText("");
-                                txtcorreo.setText("");
-                                txtedad.setText("");
-                                txtfecha.setText("");
-                                txtpass.setText("");
+                                txtprecio.setText("");
                             }
 
                         }
@@ -240,75 +213,18 @@ public class MainActivity extends AppCompatActivity {
         });
     }//findelbotonregistrar
 
-    private void listarUsuarioes(){
-        FirebaseDatabase db = FirebaseDatabase.getInstance();
-        DatabaseReference dbref = db.getReference(Usuario.class.getSimpleName());
-        ArrayList<Usuario> lisadm = new ArrayList<Usuario>();
-        ArrayAdapter <Usuario> ada = new ArrayAdapter<Usuario>(MainActivity.this, android.R.layout.simple_list_item_1, lisadm);
-        lvDatos.setAdapter(ada);
-
-        dbref.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                Usuario adm = snapshot.getValue(Usuario.class);
-                lisadm.add(adm);
-                ada.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-                ada.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-        lvDatos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Usuario adm = lisadm.get(position);
-                AlertDialog.Builder a = new AlertDialog.Builder(MainActivity.this);
-                a.setCancelable(true);
-                a.setTitle("Usuario seleccionado");
-                String msg = "ID : " + adm.getId() +"\n\n";
-                msg += "NOMBRE : " +adm.getNombre() +adm.getApellido() +"\n\n";
-                msg += "CORREO : " +adm.getCorreo() +"\n\n";
-                msg += "EDAD : " +adm.getEdad() +"\n\n";
-                msg += "FECHA : " +adm.getFecha() +"\n\n";
-
-                a.setMessage(msg);
-                a.show();
-            }
-        });
-
-    }//final metodo
-
 
     private void botonEliminar(){
         btneli.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(txtid.getText().toString().trim().isEmpty()){
-                    Toast.makeText(MainActivity.this, "Digite el ID del luchador a buscar", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Admin.this, "Digite el ID del luchador a buscar", Toast.LENGTH_SHORT).show();
 
                 }else{
                     int id = Integer.parseInt(txtid.getText().toString());
                     FirebaseDatabase db = FirebaseDatabase.getInstance();
-                    DatabaseReference dbref = db.getReference(Usuario.class.getSimpleName());
+                    DatabaseReference dbref = db.getReference(Admin.class.getSimpleName());
                     dbref.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -317,7 +233,7 @@ public class MainActivity extends AppCompatActivity {
                             final boolean[] res = {false};
                             for(DataSnapshot x : snapshot.getChildren()){
                                 if(aux.equalsIgnoreCase(x.child("id").getValue().toString())){
-                                    AlertDialog.Builder a = new AlertDialog.Builder(MainActivity.this);
+                                    AlertDialog.Builder a = new AlertDialog.Builder(Admin.this);
                                     a.setTitle("Pregunta");
                                     a.setMessage("Está seguro de querer borrar el registro?");
                                     a.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -332,15 +248,11 @@ public class MainActivity extends AppCompatActivity {
                                             res[0] = true;
                                             ocultarTeclado();
                                             x.getRef().removeValue();
-                                            listarUsuarioes();
                                             txtid.setText("");
                                             txtnom.setText("");
-                                            txtapp.setText("");
-                                            txtcorreo.setText("");
-                                            txtedad.setText("");
-                                            txtfecha.setText("");
-                                            txtpass.setText("");
-                                            Toast.makeText(MainActivity.this, "Registro eliminado", Toast.LENGTH_SHORT).show();
+                                            txtprecio.setText("");
+
+                                            Toast.makeText(Admin.this, "Registro eliminado", Toast.LENGTH_SHORT).show();
 
                                         }
                                     });
@@ -350,7 +262,7 @@ public class MainActivity extends AppCompatActivity {
                                 }
                             }
                             if(res[0] == true){
-                                Toast.makeText(MainActivity.this, "ID ("+aux+") Imposible de Eliminar", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Admin.this, "ID ("+aux+") Imposible de Eliminar", Toast.LENGTH_SHORT).show();
                             }
                         }
 
@@ -373,6 +285,35 @@ public class MainActivity extends AppCompatActivity {
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
     } // Cierra el método ocultarTeclado.
+
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_admin, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.menuCe:
+                CerrarSesion();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+
+        }
+    }
+
+    private void nuevoRegistro(){
+        Intent intent = new Intent(this, Productos.class);
+        startActivity(intent);
+    }
+
+
+    private void CerrarSesion(){
+        Intent intent = new Intent(this, Principal.class);
+        startActivity(intent);
+        Toast.makeText(this, "Cerraste Sesion", Toast.LENGTH_SHORT).show();
+    }
 
 
 }

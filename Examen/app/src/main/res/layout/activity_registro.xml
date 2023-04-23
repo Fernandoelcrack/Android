@@ -46,13 +46,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <EditText
-                android:id="@+id/txtcorreo"
-                android:hint="@string/Correo"
-                android:inputType="textEmailAddress"
+                android:id="@+id/txtusuario"
+                android:hint="@string/Username"
+                android:inputType="text|textCapWords"
                 android:minHeight="48dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/Correo"/>
+                android:text="."/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -66,7 +66,7 @@
                 android:minHeight="48dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/Password"/>
+                android:text="."/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -84,7 +84,7 @@
 
 
         <Button
-            android:id="@+id/btnRegistrarA"
+            android:id="@+id/btnreg"
             android:text="@string/Registrar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

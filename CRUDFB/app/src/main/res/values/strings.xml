@@ -10,8 +10,6 @@
     <string name="FechaRegistro">Fecha de Registro</string>
     <string name="Registrar">Registrar</string>
 
-    <resources>
-        <string name="app_name">Examen Parcial</string>
         <string name="autor">Calleja Jimenez Fernando Yahir</string>
         <string name="exam">Examen Parcial</string>
         <string name="grupo">6IM9</string>
@@ -35,13 +33,7 @@
 
         <string name="RegistroTXT">Registro de Usuarios</string>
         <string name="RegistroP">Registro de Productos</string>
-        <string name="Correo">Correo</string>
-        <string name="Password">Contrasena</string>
         <string name="Password2">Vuelva  escribir su contrasena</string>
-        <string name="Apellidos">Apellido(s)</string>
-        <string name="Edad">Edad</string>
-        <string name="FechaRegistro">Fecha de Registro</string>
-        <string name="Registrar">Registrar</string>
         <string name="Registrarp">Registrar Productos</string>
         <string name="PerfilA">Ver Perfil</string>
         <string name="Cerrar">Cerrar Sesion </string>
@@ -56,6 +48,4 @@
         <string name="invalid_username">Not a valid username</string>
         <string name="invalid_password">Password must be >5 characters</string>
 
-
-    </resources>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.crudfb2;
+package com.example.examen;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.examen.R;
 
 public class Principal extends AppCompatActivity {
     Button btnadmin, btncliente, btnver;

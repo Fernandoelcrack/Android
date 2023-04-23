@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">Examen 2do Parcial</string>
+    <string name="Username">Nombre de usuario</string>
+    <string name="Password">Contrasena</string>
+    <string name="Nombres">Nombre(s)</string>
+    <string name="Apellidos">Apellido(s)</string>
+    <string name="Precio">Precio</string>
+    <string name="Descripcion">Descripcion(s)</string>
+    <string name="Edad">Edad</string>
+    <string name="FechaRegistro">Fecha de Registro</string>
+    <string name="Registrar">Registrar</string>
+
+    <string name="autor">Calleja Jimenez Fernando Yahir</string>
+    <string name="exam">Examen Parcial</string>
+    <string name="grupo">6IM9</string>
+
+    <string name="InicioAdmin">Inicio</string>
+    <string name="PerfilAdmin">Perfil</string>
+    <string name="ListarAdmin">Registrar</string>
+    <string name="RegistrarAdmin">Lista de Admin</string>
+    <string name="Salir">Cerrar Sesion</string>
+    <string name="navigation_drawer_open">Open Navigation drawer</string>
+    <string name="navigation_drawer_close">Close Navigation drawer</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="InicioCliente">Inicio</string>
+    <string name="Acercade">Acerca de</string>
+    <string name="Compartir">Compartir</string>
+    <string name="Bienvenido">Bienvenido</string>
+    <string name="Admin">Administrador</string>
+    <string name="cliente">Cliente</string>
+    <string name="empresa">Ver empresa</string>
+
+    <string name="RegistroTXT">Registro de Usuarios</string>
+    <string name="RegistroP">Registro de Productos</string>
+    <string name="Password2">Vuelva  escribir su contrasena</string>
+    <string name="Registrarp">Registrar Productos</string>
+    <string name="PerfilA">Ver Perfil</string>
+    <string name="Cerrar">Cerrar Sesion </string>
+    <string name="Iniciar">Iniciar Sesion </string>
+    <string name="title_activity_inicio_sesion">InicioSesion</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="Tipo">Tipo de usuario</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+
+</resources>
