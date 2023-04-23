@@ -4,26 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".Productos"
     android:orientation="vertical"
     android:layout_margin="15dp">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Aplicación Con Firebase"
+        android:text="Registro de Productos"
         android:textAlignment="center"
         android:textAllCaps="true"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Administradores"
-        android:textAlignment="center"
-        android:textAllCaps="false"
         android:textSize="24sp"
         android:textStyle="bold" />
 
@@ -33,7 +23,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/txtid"
+            android:id="@+id/txtidP"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -42,71 +32,35 @@
             android:textSize="22sp"
             android:inputType="number"
             android:textAlignment="center" />
-
-        <Button
-            android:id="@+id/btnbus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="..." />
     </LinearLayout>
 
     <EditText
-        android:id="@+id/txtnom"
+        android:id="@+id/txtnomP"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Nombre de Cliente"
+        android:hint="Nombre de Producto"
         android:textSize="22sp"
         android:inputType="textPersonName"
         android:textAlignment="center" />
 
     <EditText
-        android:id="@+id/txtapp"
+        android:id="@+id/txtprecio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="@string/Apellidos"
-        android:textSize="22sp"
-        android:inputType="textPersonName"
-        android:textAlignment="center" />
-
-    <EditText
-        android:id="@+id/txtcorreo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/Correo"
-        android:textSize="22sp"
-        android:inputType="textEmailAddress"
-        android:textAlignment="center" />
-
-    <EditText
-        android:id="@+id/txtedad"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/Edad"
+        android:hint="@string/Precio"
         android:textSize="22sp"
         android:inputType="number"
         android:textAlignment="center" />
 
-    <EditText
-        android:id="@+id/txtfecha"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/FechaRegistro"
-        android:textSize="22sp"
-        android:inputType="date"
-        android:textAlignment="center" />
 
     <EditText
-        android:id="@+id/txtpass"
+        android:id="@+id/txtdesc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="@string/Password"
+        android:hint="@string/Descripcion"
         android:textSize="22sp"
         android:inputType="textPassword"
         android:textAlignment="center" />
@@ -140,19 +94,5 @@
             android:text="Eliminar" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Listado De Clientes"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
-    <ListView
-        android:id="@+id/lvDatos"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
 </LinearLayout>

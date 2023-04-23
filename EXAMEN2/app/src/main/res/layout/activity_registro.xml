@@ -23,6 +23,7 @@
             android:layout_height="wrap_content"/>
 
 
+
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -34,7 +35,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <EditText
-                android:id="@+id/Correo"
+                android:id="@+id/tipo"
+                android:hint="@string/Tipo"
+                android:inputType="number"
+                android:minHeight="48dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="."/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/correo"
                 android:hint="@string/Correo"
                 android:inputType="textEmailAddress"
                 android:minHeight="48dp"
@@ -48,7 +62,7 @@
             android:layout_height="wrap_content"
             app:passwordToggleEnabled="true">
             <EditText
-                android:id="@+id/Password"
+                android:id="@+id/password"
                 android:hint="@string/Password"
                 android:inputType="textPassword"
                 android:minHeight="48dp"
@@ -61,57 +75,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <EditText
-                android:id="@+id/Nombres"
-                android:hint="@string/Nombres"
+                android:id="@+id/password2"
+                android:hint="@string/Password2"
                 android:inputType="textCapWords|textAutoComplete"
                 android:minHeight="48dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/Nombres"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/Apellidos"
-                android:hint="@string/Apellidos"
-                android:inputType="textCapWords|textAutoComplete"
-                android:minHeight="48dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/Apellidos"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/Edad"
-                android:hint="@string/Edad"
-                android:inputType="number"
-                android:minHeight="48dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/Edad"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/Tipo"
-                android:hint="@string/Tipo"
-                android:inputType="number"
-                android:minHeight="48dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/Tipo"/>
+                android:text="."/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btnRegistrarA"
-            android:text="@string/action_sign_in"
+            android:text="@string/Registrar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btnIniciar"
+            android:text="@string/Iniciar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 

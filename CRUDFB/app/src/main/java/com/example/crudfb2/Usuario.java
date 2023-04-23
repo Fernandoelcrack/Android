@@ -1,6 +1,6 @@
 package com.example.crudfb2;
 
-public class Administrador{
+public class Usuario{
     private int id;
     private String nombre;
     private String apellido;
@@ -9,10 +9,10 @@ public class Administrador{
     private String fecha;
     private String pass;
 
-    public Administrador() {
+    public Usuario() {
     }
 
-    public Administrador(int id, String nombre, String apellido, String correo, int edad, String fecha, String pass) {
+    public Usuario(int id, String nombre, String apellido, String correo, int edad, String fecha, String pass) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -80,7 +80,7 @@ public class Administrador{
 
     @Override
     public String toString() {
-        return "Administrador{" +
+        return "Usuario{" +
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
                 ", apellido='" + apellido + '\'' +

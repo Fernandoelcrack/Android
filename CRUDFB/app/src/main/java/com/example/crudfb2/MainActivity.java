@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         botonModificar();
         botonRegistrar();
         botonEliminar();
-        listarAdministradores();
+        listarUsuarioes();
     }
 
     private void botonBuscar(){
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                     int id = Integer.parseInt(txtid.getText().toString());
 
                     FirebaseDatabase db = FirebaseDatabase.getInstance();
-                    DatabaseReference dbref = db.getReference(Administrador.class.getSimpleName());
+                    DatabaseReference dbref = db.getReference(Usuario.class.getSimpleName());
                     dbref.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
                     String pass = txtpass.getText().toString();
 
                     FirebaseDatabase db = FirebaseDatabase.getInstance();
-                    DatabaseReference dbref = db.getReference(Administrador.class.getSimpleName());
+                    DatabaseReference dbref = db.getReference(Usuario.class.getSimpleName());
 
                     dbref.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -150,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
                                     txtfecha.setText("");
                                     txtpass.setText("");
                                     ocultarTeclado();
-                                    listarAdministradores();
+                                    listarUsuarioes();
                                     break;
                                 }
                             }
@@ -158,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
                             if(res == false){
 
                                 ocultarTeclado();
-                                Toast.makeText(MainActivity.this, "ID ("+aux+") de Administrador Modificado", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, "ID ("+aux+") de Usuario Modificado", Toast.LENGTH_SHORT).show();
 
                                 txtid.setText("");
                                 txtnom.setText("");
@@ -194,7 +194,7 @@ public class MainActivity extends AppCompatActivity {
                     String pass = txtpass.getText().toString();
 
                     FirebaseDatabase db = FirebaseDatabase.getInstance();
-                    DatabaseReference dbref = db.getReference(Administrador.class.getSimpleName());
+                    DatabaseReference dbref = db.getReference(Usuario.class.getSimpleName());
 
                     dbref.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -214,10 +214,10 @@ public class MainActivity extends AppCompatActivity {
 
                             if(res == false){
 
-                                Administrador adm = new Administrador(id, nom, app, correo, edad, fecha, pass);
+                                Usuario adm = new Usuario(id, nom, app, correo, edad, fecha, pass);
                                 dbref.push().setValue(adm);
                                 ocultarTeclado();
-                                Toast.makeText(MainActivity.this, "Administrador Registrado", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, "Usuario Registrado", Toast.LENGTH_SHORT).show();
 
                                 txtid.setText("");
                                 txtnom.setText("");
@@ -240,17 +240,17 @@ public class MainActivity extends AppCompatActivity {
         });
     }//findelbotonregistrar
 
-    private void listarAdministradores(){
+    private void listarUsuarioes(){
         FirebaseDatabase db = FirebaseDatabase.getInstance();
-        DatabaseReference dbref = db.getReference(Administrador.class.getSimpleName());
-        ArrayList<Administrador> lisadm = new ArrayList<Administrador>();
-        ArrayAdapter <Administrador> ada = new ArrayAdapter<Administrador>(MainActivity.this, android.R.layout.simple_list_item_1, lisadm);
+        DatabaseReference dbref = db.getReference(Usuario.class.getSimpleName());
+        ArrayList<Usuario> lisadm = new ArrayList<Usuario>();
+        ArrayAdapter <Usuario> ada = new ArrayAdapter<Usuario>(MainActivity.this, android.R.layout.simple_list_item_1, lisadm);
         lvDatos.setAdapter(ada);
 
         dbref.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                Administrador adm = snapshot.getValue(Administrador.class);
+                Usuario adm = snapshot.getValue(Usuario.class);
                 lisadm.add(adm);
                 ada.notifyDataSetChanged();
             }
@@ -280,10 +280,10 @@ public class MainActivity extends AppCompatActivity {
         lvDatos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Administrador adm = lisadm.get(position);
+                Usuario adm = lisadm.get(position);
                 AlertDialog.Builder a = new AlertDialog.Builder(MainActivity.this);
                 a.setCancelable(true);
-                a.setTitle("Administrador seleccionado");
+                a.setTitle("Usuario seleccionado");
                 String msg = "ID : " + adm.getId() +"\n\n";
                 msg += "NOMBRE : " +adm.getNombre() +adm.getApellido() +"\n\n";
                 msg += "CORREO : " +adm.getCorreo() +"\n\n";
@@ -308,7 +308,7 @@ public class MainActivity extends AppCompatActivity {
                 }else{
                     int id = Integer.parseInt(txtid.getText().toString());
                     FirebaseDatabase db = FirebaseDatabase.getInstance();
-                    DatabaseReference dbref = db.getReference(Administrador.class.getSimpleName());
+                    DatabaseReference dbref = db.getReference(Usuario.class.getSimpleName());
                     dbref.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -332,7 +332,7 @@ public class MainActivity extends AppCompatActivity {
                                             res[0] = true;
                                             ocultarTeclado();
                                             x.getRef().removeValue();
-                                            listarAdministradores();
+                                            listarUsuarioes();
                                             txtid.setText("");
                                             txtnom.setText("");
                                             txtapp.setText("");

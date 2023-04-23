@@ -25,7 +25,7 @@
     <string name="RegistroP">Registro de Productos</string>
     <string name="Correo">Correo</string>
     <string name="Password">Contrasena</string>
-    <string name="Nombres">Nombre(s)</string>
+    <string name="Password2">Vuelva  escribir su contrasena</string>
     <string name="Apellidos">Apellido(s)</string>
     <string name="Edad">Edad</string>
     <string name="FechaRegistro">Fecha de Registro</string>
@@ -38,7 +38,7 @@
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="Tipo">Tipo de usuario</string>
-    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in">Sign in</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="welcome">"Welcome !"</string>
     <string name="invalid_username">Not a valid username</string>
